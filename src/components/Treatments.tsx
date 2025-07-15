@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Button } from './ui/button';
 import { 
   Stethoscope, 
   Scissors, 
@@ -7,54 +8,64 @@ import {
   Microscope, 
   Activity,
   Zap,
-  Baby
+  Baby,
+  ArrowRight
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const Services = () => {
-  const services = [
+const Treatments = () => {
+  const treatments = [
     {
+      id: "kidney-stone-treatment",
       icon: Stethoscope,
       title: "Kidney Stone Treatment",
       description: "Advanced treatment for kidney stones using minimally invasive techniques including lithotripsy and laser surgery.",
       features: ["ESWL (Shock Wave Lithotripsy)", "Laser Lithotripsy", "Percutaneous Nephrolithotomy"]
     },
     {
+      id: "prostate-disorders",
       icon: Shield,
       title: "Prostate Disorders",
       description: "Comprehensive treatment for prostate-related conditions including BPH and prostate cancer screening.",
       features: ["Prostate Biopsy", "TURP Surgery", "Laser Prostatectomy"]
     },
     {
+      id: "urinary-tract-infections",
       icon: Activity,
       title: "Urinary Tract Infections",
       description: "Diagnosis and treatment of recurrent UTIs and complicated urinary tract infections.",
       features: ["Urine Culture", "Cystoscopy", "Antibiotic Therapy"]
     },
     {
+      id: "male-infertility",
       icon: Heart,
       title: "Male Infertility",
       description: "Evaluation and treatment of male fertility issues with advanced diagnostic techniques.",
       features: ["Semen Analysis", "Varicocele Repair", "Hormone Therapy"]
     },
     {
+      id: "laparoscopic-surgery",
       icon: Scissors,
       title: "Laparoscopic Surgery",
       description: "Minimally invasive surgical procedures for various urological conditions.",
       features: ["Laparoscopic Nephrectomy", "Pyeloplasty", "Cystectomy"]
     },
     {
+      id: "endourology",
       icon: Microscope,
       title: "Endourology",
       description: "Advanced endoscopic procedures for treating urological conditions.",
       features: ["Ureteroscopy", "Cystoscopy", "Nephroscopy"]
     },
     {
+      id: "reconstructive-urology",
       icon: Zap,
       title: "Reconstructive Urology",
       description: "Surgical reconstruction of the urinary tract and male reproductive system.",
       features: ["Urethroplasty", "Bladder Reconstruction", "Penile Surgery"]
     },
     {
+      id: "pediatric-urology",
       icon: Baby,
       title: "Pediatric Urology",
       description: "Specialized care for urological conditions in children and adolescents.",
@@ -63,32 +74,32 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-secondary/30">
+    <section id="treatments" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Our Services</h2>
+        <div className="text-center space-y-4 mb-16 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Our Treatments</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive urological care with state-of-the-art technology and personalized treatment approaches.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <Card key={index} className="bg-card border-border hover:shadow-lg transition-shadow duration-300">
+          {treatments.map((treatment, index) => (
+            <Card key={index} className="bg-card border-border hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
               <CardHeader className="pb-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3">
-                  <service.icon className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 hover-scale">
+                  <treatment.icon className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle className="text-lg text-foreground">{service.title}</CardTitle>
+                <CardTitle className="text-lg text-foreground">{treatment.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  {service.description}
+                  {treatment.description}
                 </p>
                 <div className="space-y-2">
                   <h4 className="text-sm font-semibold text-foreground">Key Procedures:</h4>
                   <ul className="space-y-1">
-                    {service.features.map((feature, featureIndex) => (
+                    {treatment.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="text-xs text-muted-foreground flex items-center">
                         <div className="w-1 h-1 bg-primary rounded-full mr-2 flex-shrink-0"></div>
                         {feature}
@@ -96,6 +107,12 @@ const Services = () => {
                     ))}
                   </ul>
                 </div>
+                <Button asChild className="w-full mt-4">
+                  <Link to={`/treatment/${treatment.id}`} className="flex items-center justify-center gap-2">
+                    Learn More
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           ))}
@@ -120,4 +137,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Treatments;

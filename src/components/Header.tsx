@@ -40,10 +40,10 @@ const Header = () => {
               About
             </button>
             <button
-              onClick={() => scrollToSection('services')}
+              onClick={() => scrollToSection('treatments')}
               className="text-foreground hover:text-primary transition-colors"
             >
-              Services
+              Treatments
             </button>
             <button
               onClick={() => scrollToSection('appointment')}
@@ -97,10 +97,10 @@ const Header = () => {
                 About
               </button>
               <button
-                onClick={() => scrollToSection('services')}
+                onClick={() => scrollToSection('treatments')}
                 className="text-left px-4 py-2 text-foreground hover:text-primary transition-colors"
               >
-                Services
+                Treatments
               </button>
               <button
                 onClick={() => scrollToSection('appointment')}
