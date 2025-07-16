@@ -117,6 +117,22 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Schedule Consultation CTA */}
+        <div className="bg-primary/10 rounded-lg p-6 mt-8 text-center">
+          <h3 className="text-xl font-bold mb-2">Schedule Your Consultation Today</h3>
+          <p className="text-background/80 mb-4">
+            Take the first step towards better urological health. Book your consultation with Dr. Datta Sonawane.
+          </p>
+          <Button 
+            onClick={() => scrollToSection('appointment')}
+            size="lg"
+            className="bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            <Calendar className="mr-2 h-5 w-5" />
+            Schedule Consultation
+          </Button>
+        </div>
+
         {/* Bottom Section */}
         <div className="border-t border-background/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
