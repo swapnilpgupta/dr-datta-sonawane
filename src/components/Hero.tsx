@@ -1,7 +1,11 @@
 import { Button } from './ui/button';
 import { Calendar, Award, Users, Clock } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Hero = () => {
+  const [heroRef, heroVisible] = useScrollAnimation();
+  const [statsRef, statsVisible] = useScrollAnimation();
+  
   const scrollToAppointment = () => {
     const element = document.getElementById('appointment');
     if (element) {
@@ -13,7 +17,12 @@ const Hero = () => {
     <section id="home" className="pt-20 pb-12 bg-gradient-to-br from-background via-secondary/30 to-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 animate-fade-in">
+          <div 
+            ref={heroRef}
+            className={`space-y-6 transition-all duration-1000 ${
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 Expert Urological Care by{' '}
@@ -43,7 +52,12 @@ const Hero = () => {
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
+            <div 
+              ref={statsRef}
+              className={`grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 transition-all duration-1000 delay-300 ${
+                statsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+            >
               <div className="text-center space-y-2">
                 <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mx-auto">
                   <Award className="h-6 w-6 text-primary" />

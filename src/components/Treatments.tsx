@@ -12,8 +12,12 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Treatments = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [cardsRef, cardsVisible] = useScrollAnimation();
+  
   const treatments = [
     {
       id: "kidney-stone-treatment",
@@ -76,16 +80,33 @@ const Treatments = () => {
   return (
     <section id="treatments" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16 animate-fade-in">
+        <div 
+          ref={titleRef}
+          className={`text-center space-y-4 mb-16 transition-all duration-1000 ${
+            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Our Treatments</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive urological care with state-of-the-art technology and personalized treatment approaches.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div 
+          ref={cardsRef}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 transition-all duration-1000 delay-300 ${
+            cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {treatments.map((treatment, index) => (
-            <Card key={index} className="bg-card border-border hover:shadow-lg transition-all duration-300 hover:scale-105 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+            <Card key={index} className="bg-card border-border hover:shadow-lg transition-all duration-300 hover:scale-105"
+              style={{
+                animationDelay: `${index * 100}ms`,
+                transform: cardsVisible ? 'translateY(0)' : 'translateY(20px)',
+                opacity: cardsVisible ? 1 : 0,
+                transition: `all 0.6s ease-out ${index * 100}ms`
+              }}
+            >
               <CardHeader className="pb-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-3 hover-scale">
                   <treatment.icon className="h-6 w-6 text-primary" />

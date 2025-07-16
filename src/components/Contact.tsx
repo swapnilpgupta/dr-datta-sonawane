@@ -15,8 +15,11 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Contact = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [contentRef, contentVisible] = useScrollAnimation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -71,7 +74,12 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center space-y-4 mb-16 transition-all duration-1000 ${
+            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Contact Us</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Get in touch with us for any questions, concerns, or to schedule an appointment. 
@@ -79,7 +87,12 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div 
+          ref={contentRef}
+          className={`grid lg:grid-cols-2 gap-12 transition-all duration-1000 delay-300 ${
+            contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {/* Contact Information */}
           <div className="space-y-6">
             <Card className="bg-card border-border">

@@ -11,8 +11,11 @@ import { format } from 'date-fns';
 import { Calendar as CalendarIcon, Clock, User, Phone, FileText, CheckCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Appointment = () => {
+  const [titleRef, titleVisible] = useScrollAnimation();
+  const [formRef, formVisible] = useScrollAnimation();
   const [date, setDate] = useState<Date>();
   const [formData, setFormData] = useState({
     name: '',
@@ -90,14 +93,24 @@ const Appointment = () => {
   return (
     <section id="appointment" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center space-y-4 mb-16 transition-all duration-1000 ${
+            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Book an Appointment</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Schedule your consultation with Dr. Datta Sonawane. We're here to provide you with the best urological care.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div 
+          ref={formRef}
+          className={`grid lg:grid-cols-2 gap-12 transition-all duration-1000 delay-300 ${
+            formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {/* Appointment Form */}
           <Card className="bg-card border-border">
             <CardHeader>
