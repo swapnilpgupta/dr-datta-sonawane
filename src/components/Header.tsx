@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 import logoImage from '../assets/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -39,12 +41,43 @@ const Header = () => {
             >
               About
             </button>
-            <button
-              onClick={() => scrollToSection('treatments')}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsDropdownOpen(true)}
+              onMouseLeave={() => setIsDropdownOpen(false)}
+            >
+              <button
+                onClick={() => scrollToSection('treatments')}
+                className="flex items-center text-foreground hover:text-primary transition-colors"
+              >
+                Treatments
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-md shadow-lg z-50">
+                  <div className="py-2">
+                    <Link to="/treatment/kidney-stones" className="block px-4 py-2 text-sm text-foreground hover:bg-muted">
+                      Kidney Stone Treatment
+                    </Link>
+                    <Link to="/treatment/prostate-treatment" className="block px-4 py-2 text-sm text-foreground hover:bg-muted">
+                      Prostate Treatment
+                    </Link>
+                    <Link to="/treatment/urinary-incontinence" className="block px-4 py-2 text-sm text-foreground hover:bg-muted">
+                      Urinary Incontinence
+                    </Link>
+                    <Link to="/treatment/erectile-dysfunction" className="block px-4 py-2 text-sm text-foreground hover:bg-muted">
+                      Erectile Dysfunction
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+            <Link
+              to="/affiliate-hospitals"
               className="text-foreground hover:text-primary transition-colors"
             >
-              Treatments
-            </button>
+              Affiliate Hospitals
+            </Link>
             <button
               onClick={() => scrollToSection('appointment')}
               className="text-foreground hover:text-primary transition-colors"
@@ -102,6 +135,13 @@ const Header = () => {
               >
                 Treatments
               </button>
+              <Link
+                to="/affiliate-hospitals"
+                className="text-left px-4 py-2 text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Affiliate Hospitals
+              </Link>
               <button
                 onClick={() => scrollToSection('appointment')}
                 className="text-left px-4 py-2 text-foreground hover:text-primary transition-colors"

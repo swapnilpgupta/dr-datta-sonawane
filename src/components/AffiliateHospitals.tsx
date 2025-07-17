@@ -27,6 +27,70 @@ const hospitalData = [
     phone: "+91 98765 43211",
     image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop",
     services: ["Orthopedics", "Gastroenterology", "Pediatrics"]
+  },
+  {
+    id: 3,
+    name: "Kokilaben Dhirubhai Ambani Hospital",
+    location: "Andheri West",
+    phone: "+91 98765 43212",
+    image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833?w=600&h=400&fit=crop",
+    services: ["Neurosurgery", "Cardiac Surgery", "Transplants"]
+  },
+  {
+    id: 4,
+    name: "Lilavati Hospital",
+    location: "Bandra West",
+    phone: "+91 98765 43213",
+    image: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?w=600&h=400&fit=crop",
+    services: ["Emergency Care", "ICU", "Radiology"]
+  },
+  {
+    id: 5,
+    name: "Breach Candy Hospital",
+    location: "Breach Candy",
+    phone: "+91 98765 43214",
+    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop",
+    services: ["Maternity", "Gynecology", "General Surgery"]
+  },
+  {
+    id: 6,
+    name: "Hinduja Hospital",
+    location: "Mahim",
+    phone: "+91 98765 43215",
+    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop",
+    services: ["Nephrology", "Hepatology", "Pulmonology"]
+  },
+  {
+    id: 7,
+    name: "Jaslok Hospital",
+    location: "Pedder Road",
+    phone: "+91 98765 43216",
+    image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833?w=600&h=400&fit=crop",
+    services: ["Oncology", "Neurology", "Cardiology"]
+  },
+  {
+    id: 8,
+    name: "Bombay Hospital",
+    location: "New Marine Lines",
+    phone: "+91 98765 43217",
+    image: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?w=600&h=400&fit=crop",
+    services: ["General Medicine", "Surgery", "Psychiatry"]
+  },
+  {
+    id: 9,
+    name: "Wockhardt Hospital",
+    location: "Mumbai Central",
+    phone: "+91 98765 43218",
+    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop",
+    services: ["Minimal Access Surgery", "Joint Replacement", "Spine Surgery"]
+  },
+  {
+    id: 10,
+    name: "Nanavati Super Speciality Hospital",
+    location: "Vile Parle West",
+    phone: "+91 98765 43219",
+    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop",
+    services: ["Robotic Surgery", "Cancer Care", "Heart Care"]
   }
 ];
 

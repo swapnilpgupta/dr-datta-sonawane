@@ -8,6 +8,10 @@ import Index from "./pages/Index";
 import TreatmentDetail from "./pages/TreatmentDetail";
 import DoctorProfile from "./pages/DoctorProfile";
 import AffiliateHospitalsPage from "./pages/AffiliateHospitalsPage";
+import KidneyStonesTreatment from "./pages/KidneyStonesTreatment";
+import ProstateTreatment from "./pages/ProstateTreatment";
+import UrinaryIncontinence from "./pages/UrinaryIncontinence";
+import ErectileDysfunction from "./pages/ErectileDysfunction";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +26,10 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/treatment/:id" element={<TreatmentDetail />} />
+            <Route path="/treatment/kidney-stones" element={<KidneyStonesTreatment />} />
+            <Route path="/treatment/prostate-treatment" element={<ProstateTreatment />} />
+            <Route path="/treatment/urinary-incontinence" element={<UrinaryIncontinence />} />
+            <Route path="/treatment/erectile-dysfunction" element={<ErectileDysfunction />} />
             <Route path="/doctor" element={<DoctorProfile />} />
             <Route path="/affiliate-hospitals" element={<AffiliateHospitalsPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
