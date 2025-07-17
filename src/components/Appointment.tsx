@@ -54,7 +54,7 @@ const Appointment = () => {
     }));
   };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -119,6 +119,7 @@ const Appointment = () => {
       setIsSubmitting(false);
     }
   };
+
 
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
