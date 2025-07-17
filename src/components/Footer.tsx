@@ -118,9 +118,9 @@ const Footer = () => {
         </div>
 
         {/* Map Section */}
-        <div className="bg-primary/10 rounded-lg p-6 mt-8">
-          <h3 className="text-xl font-bold mb-4 text-center">Our Location</h3>
-          <div className="aspect-video bg-muted rounded-lg overflow-hidden mb-4">
+        <div className="bg-primary/10 rounded-lg p-4 mt-8">
+          <h3 className="text-lg font-bold mb-3 text-center">Our Location</h3>
+          <div className="aspect-[2/1] bg-muted rounded-lg overflow-hidden mb-3 max-w-md mx-auto">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.9750556078894!2d72.82773051490208!3d19.01721608711819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce7b88c17da7%3A0xf8a6c0ea0c2fc3d!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1697890000000!5m2!1sen!2sin"
               width="100%"
@@ -132,7 +132,7 @@ const Footer = () => {
               title="Dr. Datta Sonawane Clinic Location"
             ></iframe>
           </div>
-          <p className="text-sm text-background/80 text-center mb-4">
+          <p className="text-xs text-background/80 text-center">
             123 Medical Center Drive, Healthcare Complex, 2nd Floor, Mumbai, Maharashtra 400001
           </p>
         </div>

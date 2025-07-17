@@ -12,6 +12,7 @@ import KidneyStonesTreatment from "./pages/KidneyStonesTreatment";
 import ProstateTreatment from "./pages/ProstateTreatment";
 import UrinaryIncontinence from "./pages/UrinaryIncontinence";
 import ErectileDysfunction from "./pages/ErectileDysfunction";
+import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/treatment/erectile-dysfunction" element={<ErectileDysfunction />} />
             <Route path="/doctor" element={<DoctorProfile />} />
             <Route path="/affiliate-hospitals" element={<AffiliateHospitalsPage />} />
+            <Route path="/blog" element={<Blog />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

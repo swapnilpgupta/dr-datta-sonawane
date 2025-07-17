@@ -20,60 +20,46 @@ const Treatments = () => {
   
   const treatments = [
     {
-      id: "kidney-stone-treatment",
+      id: "kidney-stones-prostate-disorders",
       icon: Stethoscope,
-      title: "Kidney Stone Treatment",
-      description: "Advanced treatment for kidney stones using minimally invasive techniques including lithotripsy and laser surgery.",
-      features: ["ESWL (Shock Wave Lithotripsy)", "Laser Lithotripsy", "Percutaneous Nephrolithotomy"]
+      title: "Kidney Stones & Prostate Disorders",
+      description: "Comprehensive treatment for kidney stones and prostate-related conditions using advanced minimally invasive techniques.",
+      features: ["ESWL (Shock Wave Lithotripsy)", "Laser Lithotripsy", "TURP Surgery", "Laser Prostatectomy"]
     },
     {
-      id: "prostate-disorders",
-      icon: Shield,
-      title: "Prostate Disorders",
-      description: "Comprehensive treatment for prostate-related conditions including BPH and prostate cancer screening.",
-      features: ["Prostate Biopsy", "TURP Surgery", "Laser Prostatectomy"]
-    },
-    {
-      id: "urinary-tract-infections",
-      icon: Activity,
-      title: "Urinary Tract Infections",
-      description: "Diagnosis and treatment of recurrent UTIs and complicated urinary tract infections.",
-      features: ["Urine Culture", "Cystoscopy", "Antibiotic Therapy"]
-    },
-    {
-      id: "male-infertility",
+      id: "male-infertility-sexual-health",
       icon: Heart,
-      title: "Male Infertility",
-      description: "Evaluation and treatment of male fertility issues with advanced diagnostic techniques.",
-      features: ["Semen Analysis", "Varicocele Repair", "Hormone Therapy"]
+      title: "Male Infertility & Sexual Health",
+      description: "Complete evaluation and treatment of male fertility issues and sexual health disorders with cutting-edge diagnostic techniques.",
+      features: ["Semen Analysis", "Varicocele Repair", "Hormone Therapy", "Erectile Dysfunction Treatment"]
     },
     {
-      id: "laparoscopic-surgery",
+      id: "laparoscopic-minimally-invasive",
       icon: Scissors,
-      title: "Laparoscopic Surgery",
-      description: "Minimally invasive surgical procedures for various urological conditions.",
-      features: ["Laparoscopic Nephrectomy", "Pyeloplasty", "Cystectomy"]
+      title: "Laparoscopic & Minimally Invasive Urological Surgeries",
+      description: "State-of-the-art minimally invasive surgical procedures for various urological conditions with faster recovery times.",
+      features: ["Laparoscopic Nephrectomy", "Robotic Surgery", "Endoscopic Procedures", "Pyeloplasty"]
     },
     {
-      id: "endourology",
-      icon: Microscope,
-      title: "Endourology",
-      description: "Advanced endoscopic procedures for treating urological conditions.",
-      features: ["Ureteroscopy", "Cystoscopy", "Nephroscopy"]
+      id: "uro-oncology",
+      icon: Shield,
+      title: "Uro-Oncology (Kidney, Bladder & Prostate Cancers)",
+      description: "Specialized cancer care for urological malignancies with comprehensive treatment plans and advanced surgical techniques.",
+      features: ["Radical Nephrectomy", "Cystectomy", "Prostatectomy", "Immunotherapy"]
     },
     {
       id: "reconstructive-urology",
       icon: Zap,
-      title: "Reconstructive Urology",
-      description: "Surgical reconstruction of the urinary tract and male reproductive system.",
-      features: ["Urethroplasty", "Bladder Reconstruction", "Penile Surgery"]
+      title: "Reconstructive Urology (Stricture, Fistula, etc.)",
+      description: "Expert surgical reconstruction of the urinary tract for complex conditions including strictures and fistulas.",
+      features: ["Urethroplasty", "Bladder Reconstruction", "Fistula Repair", "Urethral Stricture Treatment"]
     },
     {
-      id: "pediatric-urology",
-      icon: Baby,
-      title: "Pediatric Urology",
-      description: "Specialized care for urological conditions in children and adolescents.",
-      features: ["Hypospadias Repair", "Undescended Testis", "Vesicoureteral Reflux"]
+      id: "general-urological-disorders",
+      icon: Activity,
+      title: "General Urological Disorders",
+      description: "Comprehensive care for common urological conditions with personalized treatment approaches and follow-up care.",
+      features: ["UTI Treatment", "Bladder Dysfunction", "Incontinence Management", "General Consultation"]
     }
   ];
 
