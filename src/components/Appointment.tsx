@@ -1,3 +1,8 @@
+okay i will share full code 
+paste the code of step 3 
+plase show me 
+
+
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
@@ -58,6 +63,7 @@ const Appointment = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Validate form
     if (!formData.name || !formData.phone || !formData.treatment || !date || !formData.time) {
       toast({
         title: "Please fill all required fields",
@@ -67,59 +73,6 @@ const Appointment = () => {
       setIsSubmitting(false);
       return;
     }
-
-    const payload = {
-      name: formData.name,
-      phone: formData.phone,
-      email: formData.email,
-      treatment: formData.treatment,
-      date: date ? date.toDateString() : '',
-      time: formData.time,
-      message: formData.message,
-    };
-
-    try {
-      const response = await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Appointment Request Submitted!",
-          description: "We'll contact you soon to confirm your appointment.",
-        });
-
-        setFormData({
-          name: '',
-          phone: '',
-          email: '',
-          treatment: '',
-          time: '',
-          message: '',
-        });
-        setDate(undefined);
-      } else {
-        toast({
-          title: "Failed to submit appointment",
-          description: "Something went wrong. Please try again.",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Network error. Try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
 
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
