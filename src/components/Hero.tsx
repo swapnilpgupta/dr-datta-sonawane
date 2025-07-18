@@ -1,6 +1,7 @@
 import { Button } from './ui/button';
 import { Calendar, Award, Users, Clock } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [heroRef, heroVisible] = useScrollAnimation();
@@ -46,9 +47,9 @@ const Hero = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                asChild
               >
-                Learn More
+                <Link to="/blog">Learn More</Link>
               </Button>
             </div>
 
