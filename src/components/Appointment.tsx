@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
@@ -29,12 +28,12 @@ const Appointment = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  // Google Sheets Web App URL (you'll need to replace this with your actual web app URL)
-  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+  // Updated Google Sheets Web App URL with your provided script
+  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwTqenxxX8rO3PQULPweqfopXWMycOKpMmWNx9vmZwu8t7nt7jk1wD1ZH7NLHIchU1Srg/exec';
 
   const treatments = [
     "Kidney Stone Treatment",
-    "Prostate Disorders",
+    "Prostate Disorders", 
     "Urinary Tract Infections",
     "Male Infertility",
     "Laparoscopic Surgery",
