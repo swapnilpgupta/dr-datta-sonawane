@@ -58,22 +58,56 @@ const Appointment = () => {
   };
 
   const submitToGoogleSheets = async (appointmentData: any) => {
+    console.log('Attempting to submit to Google Sheets:', appointmentData);
+    console.log('Using URL:', GOOGLE_SHEETS_URL);
+    
     try {
+      // First attempt with fetch
       const response = await fetch(GOOGLE_SHEETS_URL, {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(appointmentData)
       });
 
-      // Since we're using no-cors mode, we can't read the response
-      // but the request will be sent to Google Sheets
-      return { success: true };
+      console.log('Response status:', response.status);
+      console.log('Response headers:', [...response.headers.entries()]);
+
+      // Try to read response text
+      const responseText = await response.text();
+      console.log('Response text:', responseText);
+
+      // Check if response is successful
+      if (response.ok) {
+        return { success: true, data: responseText };
+      } else {
+        throw new Error(`HTTP ${response.status}: ${responseText}`);
+      }
     } catch (error) {
-      console.error('Error submitting to Google Sheets:', error);
-      throw error;
+      console.error('Fetch failed, trying alternative method:', error);
+      
+      // Alternative method using form data
+      try {
+        const formData = new FormData();
+        Object.keys(appointmentData).forEach(key => {
+          formData.append(key, appointmentData[key]);
+        });
+
+        const response2 = await fetch(GOOGLE_SHEETS_URL, {
+          method: 'POST',
+          body: formData
+        });
+
+        console.log('Alternative method response status:', response2.status);
+        const responseText2 = await response2.text();
+        console.log('Alternative method response text:', responseText2);
+
+        return { success: true, data: responseText2 };
+      } catch (error2) {
+        console.error('Alternative method also failed:', error2);
+        throw error2;
+      }
     }
   };
 
@@ -81,8 +115,13 @@ const Appointment = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    console.log('Form submission started');
+    console.log('Form data:', formData);
+    console.log('Selected date:', date);
+
     // Validate form
     if (!formData.name || !formData.phone || !formData.treatment || !date || !formData.time) {
+      console.log('Validation failed - missing required fields');
       toast({
         title: "Please fill all required fields",
         description: "Name, phone, treatment, date, and time are required.",
@@ -106,14 +145,15 @@ const Appointment = () => {
         status: 'Pending'
       };
 
-      console.log('Submitting appointment data:', appointmentData);
+      console.log('Prepared appointment data:', appointmentData);
 
       // Submit to Google Sheets
-      await submitToGoogleSheets(appointmentData);
+      const result = await submitToGoogleSheets(appointmentData);
+      console.log('Submission result:', result);
 
       toast({
         title: "Appointment Request Submitted!",
-        description: "Your appointment data has been saved to our system. We'll contact you soon to confirm.",
+        description: "Your appointment data has been saved. We'll contact you soon to confirm. Check browser console for detailed logs.",
       });
 
       // Reset form
@@ -130,7 +170,7 @@ const Appointment = () => {
       console.error('Error submitting appointment:', error);
       toast({
         title: "Submission Error",
-        description: "There was an issue submitting your appointment. Please try again or contact us directly.",
+        description: `There was an issue submitting your appointment: ${error}. Check browser console for details.`,
         variant: "destructive",
       });
     } finally {
@@ -153,7 +193,7 @@ const Appointment = () => {
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
             <p className="text-sm text-blue-800">
-              <strong>Note:</strong> Your appointment details will be securely stored and our team will contact you within 24 hours to confirm your appointment.
+              <strong>Debug Mode:</strong> Check your browser's console (F12) for detailed submission logs to troubleshoot any Google Sheets connection issues.
             </p>
           </div>
         </div>
@@ -319,7 +359,7 @@ const Appointment = () => {
                   ) : (
                     <div className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4" />
-                      Submit to Google Sheets
+                      Submit Appointment Request
                     </div>
                   )}
                 </Button>
@@ -362,7 +402,7 @@ const Appointment = () => {
               <CardHeader>
                 <CardTitle className="text-xl text-foreground flex items-center">
                   <FileText className="mr-2 h-5 w-5 text-primary" />
-                  Data Collection Notice
+                  Debugging Information
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -370,27 +410,27 @@ const Appointment = () => {
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-semibold text-foreground">Secure Storage</h4>
+                      <h4 className="font-semibold text-foreground">Check Console Logs</h4>
                       <p className="text-sm text-muted-foreground">
-                        Your appointment data is securely stored in Google Sheets
+                        Press F12 to open Developer Tools and check the Console tab for detailed submission logs
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-semibold text-foreground">Quick Response</h4>
+                      <h4 className="font-semibold text-foreground">Google Sheets Setup</h4>
                       <p className="text-sm text-muted-foreground">
-                        Our team will contact you within 24 hours for confirmation
+                        Ensure your Google Apps Script is deployed as a web app with "Execute as: Me" and "Who has access: Anyone"
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-semibold text-foreground">Privacy Protected</h4>
+                      <h4 className="font-semibold text-foreground">Script Permissions</h4>
                       <p className="text-sm text-muted-foreground">
-                        Your personal information is kept confidential and secure
+                        Make sure you've authorized the script to access your Google Sheets
                       </p>
                     </div>
                   </div>
