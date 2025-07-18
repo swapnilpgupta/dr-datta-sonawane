@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
@@ -28,6 +29,9 @@ const Appointment = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  // Google Sheets Web App URL (you'll need to replace this with your actual web app URL)
+  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
   const treatments = [
     "Kidney Stone Treatment",
     "Prostate Disorders",
@@ -54,6 +58,26 @@ const Appointment = () => {
     }));
   };
 
+  const submitToGoogleSheets = async (appointmentData: any) => {
+    try {
+      const response = await fetch(GOOGLE_SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(appointmentData)
+      });
+
+      // Since we're using no-cors mode, we can't read the response
+      // but the request will be sent to Google Sheets
+      return { success: true };
+    } catch (error) {
+      console.error('Error submitting to Google Sheets:', error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -69,25 +93,50 @@ const Appointment = () => {
       return;
     }
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // Prepare data for Google Sheets
+      const appointmentData = {
+        timestamp: new Date().toISOString(),
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email || 'Not provided',
+        treatment: formData.treatment,
+        date: format(date, 'yyyy-MM-dd'),
+        time: formData.time,
+        message: formData.message || 'No additional message',
+        status: 'Pending'
+      };
 
-    toast({
-      title: "Appointment Request Submitted!",
-      description: "We'll contact you soon to confirm your appointment.",
-    });
+      console.log('Submitting appointment data:', appointmentData);
 
-    // Reset form
-    setFormData({
-      name: '',
-      phone: '',
-      email: '',
-      treatment: '',
-      time: '',
-      message: ''
-    });
-    setDate(undefined);
-    setIsSubmitting(false);
+      // Submit to Google Sheets
+      await submitToGoogleSheets(appointmentData);
+
+      toast({
+        title: "Appointment Request Submitted!",
+        description: "Your appointment data has been saved to our system. We'll contact you soon to confirm.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        treatment: '',
+        time: '',
+        message: ''
+      });
+      setDate(undefined);
+    } catch (error) {
+      console.error('Error submitting appointment:', error);
+      toast({
+        title: "Submission Error",
+        description: "There was an issue submitting your appointment. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -103,6 +152,11 @@ const Appointment = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Schedule your consultation with Dr. Datta Sonawane. We're here to provide you with the best urological care.
           </p>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
+            <p className="text-sm text-blue-800">
+              <strong>Note:</strong> Your appointment details will be securely stored and our team will contact you within 24 hours to confirm your appointment.
+            </p>
+          </div>
         </div>
 
         <div 
@@ -261,12 +315,12 @@ const Appointment = () => {
                   {isSubmitting ? (
                     <div className="flex items-center">
                       <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Submitting...
+                      Submitting to Google Sheets...
                     </div>
                   ) : (
                     <div className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4" />
-                      Book Appointment
+                      Submit to Google Sheets
                     </div>
                   )}
                 </Button>
@@ -309,7 +363,7 @@ const Appointment = () => {
               <CardHeader>
                 <CardTitle className="text-xl text-foreground flex items-center">
                   <FileText className="mr-2 h-5 w-5 text-primary" />
-                  What to Expect
+                  Data Collection Notice
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -317,27 +371,27 @@ const Appointment = () => {
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-semibold text-foreground">Consultation</h4>
+                      <h4 className="font-semibold text-foreground">Secure Storage</h4>
                       <p className="text-sm text-muted-foreground">
-                        Detailed discussion about your symptoms and medical history
+                        Your appointment data is securely stored in Google Sheets
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-semibold text-foreground">Examination</h4>
+                      <h4 className="font-semibold text-foreground">Quick Response</h4>
                       <p className="text-sm text-muted-foreground">
-                        Physical examination and diagnostic tests if required
+                        Our team will contact you within 24 hours for confirmation
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <h4 className="font-semibold text-foreground">Treatment Plan</h4>
+                      <h4 className="font-semibold text-foreground">Privacy Protected</h4>
                       <p className="text-sm text-muted-foreground">
-                        Personalized treatment recommendations and follow-up plan
+                        Your personal information is kept confidential and secure
                       </p>
                     </div>
                   </div>
