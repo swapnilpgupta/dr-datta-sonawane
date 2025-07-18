@@ -167,11 +167,6 @@ const Appointment = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Schedule your consultation with Dr. Datta Sonawane. We're here to provide you with the best urological care.
           </p>
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 max-w-2xl mx-auto">
-            <p className="text-sm text-green-800">
-              <strong>✅ Updated:</strong> Now using your new Google Apps Script deployment. Test the form to see if it works!
-            </p>
-          </div>
         </div>
 
         <div 

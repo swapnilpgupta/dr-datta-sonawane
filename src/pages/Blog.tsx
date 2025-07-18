@@ -9,49 +9,49 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "Understanding Kidney Stones: Prevention and Treatment Options",
-      excerpt: "Learn about the causes, symptoms, and modern treatment approaches for kidney stones, including minimally invasive procedures.",
-      content: "Kidney stones are hard deposits of minerals and salts that form inside the kidneys. They can cause severe pain and complications if not treated properly. Modern treatment options include ESWL (Extracorporeal Shock Wave Lithotripsy), laser lithotripsy, and percutaneous nephrolithotomy, offering patients effective solutions with minimal recovery time.",
+      title: "Kidney Stones & Prostate Disorders: Complete Guide to Modern Treatment",
+      excerpt: "Comprehensive overview of kidney stones and prostate disorders, including causes, symptoms, and advanced treatment options available today.",
+      content: "Kidney stones are crystalline deposits that form in the kidneys when urine becomes concentrated, allowing minerals to crystallize and stick together. Common types include calcium oxalate, calcium phosphate, uric acid, and struvite stones. Symptoms include severe pain in the back or side, blood in urine, nausea, and frequent urination. Modern treatment options include ESWL (Extracorporeal Shock Wave Lithotripsy), which uses shock waves to break stones into smaller pieces, laser lithotripsy for precise stone fragmentation, and percutaneous nephrolithotomy for large stones. Prevention strategies include adequate hydration, dietary modifications, and medication when necessary. Prostate disorders encompass benign prostatic hyperplasia (BPH), prostatitis, and prostate cancer. BPH affects over 50% of men over 60, causing urinary symptoms due to prostate enlargement. Treatment ranges from medication to minimally invasive procedures like TURP (Transurethral Resection of the Prostate) and laser prostatectomy. Early detection through PSA screening and digital rectal examination is crucial for prostate cancer, which is highly treatable when caught early. Advanced treatments include robotic-assisted surgery, radiation therapy, and hormone therapy.",
       date: "2024-01-15",
       author: "Dr. Datta Sonawane"
     },
     {
       id: 2,
-      title: "Prostate Health: Early Detection and Treatment Strategies",
-      excerpt: "Comprehensive guide to prostate disorders, from benign enlargement to cancer screening and treatment options.",
-      content: "Prostate disorders affect millions of men worldwide. Early detection through regular screening is crucial for effective treatment. Modern approaches include minimally invasive procedures like TURP surgery and laser prostatectomy, which offer excellent outcomes with reduced recovery time.",
+      title: "Male Infertility & Sexual Health: Advanced Diagnostic and Treatment Approaches",
+      excerpt: "Comprehensive guide to male fertility issues and sexual health disorders, covering modern diagnostic techniques and treatment options.",
+      content: "Male infertility affects approximately 40-50% of couples experiencing fertility issues. Common causes include varicocele (enlarged veins in the scrotum), hormonal imbalances, genetic factors, infections, and lifestyle factors. Comprehensive evaluation begins with detailed medical history and physical examination, followed by semen analysis to assess sperm count, motility, and morphology. Advanced diagnostic tests include hormone testing (testosterone, FSH, LH), genetic screening, and specialized sperm function tests. Treatment approaches vary based on underlying causes: lifestyle modifications including diet, exercise, and avoiding smoking/excessive alcohol; medical treatments such as hormone therapy and antioxidant supplements; surgical interventions like varicocele repair, which can improve sperm quality in 60-70% of cases; and assisted reproductive technologies (ART) including intrauterine insemination (IUI) and in vitro fertilization (IVF). Sexual health disorders, including erectile dysfunction (ED) and premature ejaculation, are common but highly treatable. ED affects over 30 million men in the US, with causes ranging from vascular issues to psychological factors. Treatment options include oral medications (PDE5 inhibitors), vacuum devices, penile injections, and penile implants for severe cases. Premature ejaculation can be treated with behavioral techniques, topical anesthetics, and medications. Regular follow-up and counseling are essential components of comprehensive sexual health care.",
       date: "2024-01-10",
       author: "Dr. Datta Sonawane"
     },
     {
       id: 3,
-      title: "Male Infertility: Modern Diagnostic and Treatment Approaches",
-      excerpt: "Exploring the latest advances in male fertility evaluation and treatment options for couples trying to conceive.",
-      content: "Male infertility affects approximately 40-50% of infertile couples. Comprehensive evaluation includes semen analysis, hormone testing, and genetic screening. Treatment options range from lifestyle modifications to advanced procedures like varicocele repair and assisted reproductive technologies.",
+      title: "Laparoscopic Surgery: Benefits of Minimally Invasive Techniques",
+      excerpt: "Discover how laparoscopic and robotic surgical techniques are revolutionizing urological care with better outcomes and faster recovery.",
+      content: "Minimally invasive urological surgeries offer numerous advantages including smaller incisions, reduced pain, shorter hospital stays, and faster recovery. These techniques are now used for complex procedures like nephrectomy, pyeloplasty, and prostatectomy with excellent outcomes.",
       date: "2024-01-05",
       author: "Dr. Datta Sonawane"
     },
     {
       id: 4,
-      title: "Laparoscopic Surgery: Benefits of Minimally Invasive Techniques",
-      excerpt: "Discover how laparoscopic and robotic surgical techniques are revolutionizing urological care.",
-      content: "Minimally invasive urological surgeries offer numerous advantages including smaller incisions, reduced pain, shorter hospital stays, and faster recovery. These techniques are now used for complex procedures like nephrectomy, pyeloplasty, and prostatectomy with excellent outcomes.",
+      title: "Uro-Oncology: Advances in Cancer Treatment",
+      excerpt: "Latest developments in treating kidney, bladder, and prostate cancers with improved survival rates and quality of life.",
+      content: "Urological cancers require specialized care and treatment. Recent advances include robotic surgery, immunotherapy, and targeted therapies. Early detection through screening programs significantly improves treatment outcomes and patient survival rates.",
       date: "2023-12-28",
       author: "Dr. Datta Sonawane"
     },
     {
       id: 5,
-      title: "Uro-Oncology: Advances in Cancer Treatment",
-      excerpt: "Latest developments in treating kidney, bladder, and prostate cancers with improved survival rates.",
-      content: "Urological cancers require specialized care and treatment. Recent advances include robotic surgery, immunotherapy, and targeted therapies. Early detection through screening programs significantly improves treatment outcomes and patient survival rates.",
+      title: "Reconstructive Urology: Restoring Function and Quality of Life",
+      excerpt: "Learn about surgical reconstruction techniques for complex urological conditions and how they restore normal function.",
+      content: "Reconstructive urology focuses on restoring normal urinary and reproductive function. Procedures include urethroplasty for strictures, bladder reconstruction, and fistula repair. These complex surgeries require specialized expertise and can dramatically improve patients' quality of life.",
       date: "2023-12-20",
       author: "Dr. Datta Sonawane"
     },
     {
       id: 6,
-      title: "Reconstructive Urology: Restoring Function and Quality of Life",
-      excerpt: "Learn about surgical reconstruction techniques for complex urological conditions.",
-      content: "Reconstructive urology focuses on restoring normal urinary and reproductive function. Procedures include urethroplasty for strictures, bladder reconstruction, and fistula repair. These complex surgeries require specialized expertise and can dramatically improve patients' quality of life.",
+      title: "General Urological Health: Prevention and Early Detection",
+      excerpt: "Essential information about maintaining urological health and recognizing early warning signs of common conditions.",
+      content: "Prevention is key to maintaining urological health throughout life. Regular screening, healthy lifestyle choices, and early intervention can prevent many serious conditions and improve treatment outcomes when issues do arise.",
       date: "2023-12-15",
       author: "Dr. Datta Sonawane"
     }
