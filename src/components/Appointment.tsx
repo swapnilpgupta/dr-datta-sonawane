@@ -28,8 +28,8 @@ const Appointment = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  // Updated Google Sheets Web App URL with your provided script
-  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwTqenxxX8rO3PQULPweqfopXWMycOKpMmWNx9vmZwu8t7nt7jk1wD1ZH7NLHIchU1Srg/exec';
+  // Updated Google Sheets Web App URL with your new deployment
+  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwU2xvCURay8MYPU5Y5cbuGNfC9vt5LZ8nF85bMziHHe0CkX8_NXcGrfkr4vyk-2jVltg/exec';
 
   const treatments = [
     "Kidney Stone Treatment",
@@ -59,10 +59,9 @@ const Appointment = () => {
 
   const submitToGoogleSheets = async (appointmentData: any) => {
     console.log('Attempting to submit to Google Sheets:', appointmentData);
-    console.log('Using URL:', GOOGLE_SHEETS_URL);
+    console.log('Using NEW URL:', GOOGLE_SHEETS_URL);
     
     try {
-      // First attempt with fetch
       const response = await fetch(GOOGLE_SHEETS_URL, {
         method: 'POST',
         headers: {
@@ -74,40 +73,17 @@ const Appointment = () => {
       console.log('Response status:', response.status);
       console.log('Response headers:', [...response.headers.entries()]);
 
-      // Try to read response text
       const responseText = await response.text();
       console.log('Response text:', responseText);
 
-      // Check if response is successful
       if (response.ok) {
         return { success: true, data: responseText };
       } else {
         throw new Error(`HTTP ${response.status}: ${responseText}`);
       }
     } catch (error) {
-      console.error('Fetch failed, trying alternative method:', error);
-      
-      // Alternative method using form data
-      try {
-        const formData = new FormData();
-        Object.keys(appointmentData).forEach(key => {
-          formData.append(key, appointmentData[key]);
-        });
-
-        const response2 = await fetch(GOOGLE_SHEETS_URL, {
-          method: 'POST',
-          body: formData
-        });
-
-        console.log('Alternative method response status:', response2.status);
-        const responseText2 = await response2.text();
-        console.log('Alternative method response text:', responseText2);
-
-        return { success: true, data: responseText2 };
-      } catch (error2) {
-        console.error('Alternative method also failed:', error2);
-        throw error2;
-      }
+      console.error('Submission failed:', error);
+      throw error;
     }
   };
 
@@ -115,7 +91,7 @@ const Appointment = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    console.log('Form submission started');
+    console.log('Form submission started with NEW URL');
     console.log('Form data:', formData);
     console.log('Selected date:', date);
 
@@ -153,7 +129,7 @@ const Appointment = () => {
 
       toast({
         title: "Appointment Request Submitted!",
-        description: "Your appointment data has been saved. We'll contact you soon to confirm. Check browser console for detailed logs.",
+        description: "Your appointment has been successfully submitted. We'll contact you soon to confirm.",
       });
 
       // Reset form
@@ -170,7 +146,7 @@ const Appointment = () => {
       console.error('Error submitting appointment:', error);
       toast({
         title: "Submission Error",
-        description: `There was an issue submitting your appointment: ${error}. Check browser console for details.`,
+        description: `There was an issue submitting your appointment: ${error}. Please try again.`,
         variant: "destructive",
       });
     } finally {
@@ -191,9 +167,9 @@ const Appointment = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Schedule your consultation with Dr. Datta Sonawane. We're here to provide you with the best urological care.
           </p>
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 max-w-2xl mx-auto">
-            <p className="text-sm text-red-800">
-              <strong>CORS Error Detected:</strong> Your Google Apps Script needs to be updated to handle cross-origin requests. Check the setup guide below for the fix.
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 max-w-2xl mx-auto">
+            <p className="text-sm text-green-800">
+              <strong>✅ Updated:</strong> Now using your new Google Apps Script deployment. Test the form to see if it works!
             </p>
           </div>
         </div>
