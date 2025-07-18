@@ -191,9 +191,9 @@ const Appointment = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Schedule your consultation with Dr. Datta Sonawane. We're here to provide you with the best urological care.
           </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto">
-            <p className="text-sm text-blue-800">
-              <strong>Debug Mode:</strong> Check your browser's console (F12) for detailed submission logs to troubleshoot any Google Sheets connection issues.
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 max-w-2xl mx-auto">
+            <p className="text-sm text-red-800">
+              <strong>CORS Error Detected:</strong> Your Google Apps Script needs to be updated to handle cross-origin requests. Check the setup guide below for the fix.
             </p>
           </div>
         </div>
@@ -266,11 +266,11 @@ const Appointment = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="treatment" className="text-sm font-medium text-foreground">
+                  <Label htmlFor="treatment-select" className="text-sm font-medium text-foreground">
                     Treatment Required *
                   </Label>
                   <Select value={formData.treatment} onValueChange={(value) => handleInputChange('treatment', value)}>
-                    <SelectTrigger>
+                    <SelectTrigger id="treatment-select">
                       <SelectValue placeholder="Select treatment type" />
                     </SelectTrigger>
                     <SelectContent>
@@ -285,12 +285,13 @@ const Appointment = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-foreground">
+                    <Label htmlFor="date-picker" className="text-sm font-medium text-foreground">
                       Preferred Date *
                     </Label>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
+                          id="date-picker"
                           variant="outline"
                           className={cn(
                             "w-full justify-start text-left font-normal",
@@ -315,11 +316,11 @@ const Appointment = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="time" className="text-sm font-medium text-foreground">
+                    <Label htmlFor="time-select" className="text-sm font-medium text-foreground">
                       Preferred Time *
                     </Label>
                     <Select value={formData.time} onValueChange={(value) => handleInputChange('time', value)}>
-                      <SelectTrigger>
+                      <SelectTrigger id="time-select">
                         <SelectValue placeholder="Select time slot" />
                       </SelectTrigger>
                       <SelectContent>
