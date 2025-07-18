@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +14,7 @@ import ProstateTreatment from "./pages/ProstateTreatment";
 import UrinaryIncontinence from "./pages/UrinaryIncontinence";
 import ErectileDysfunction from "./pages/ErectileDysfunction";
 import Blog from "./pages/Blog";
+import GoogleSheetsSetupPage from "./pages/GoogleSheetsSetup";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +36,7 @@ const App = () => (
             <Route path="/doctor" element={<DoctorProfile />} />
             <Route path="/affiliate-hospitals" element={<AffiliateHospitalsPage />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/google-sheets-setup" element={<GoogleSheetsSetupPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
