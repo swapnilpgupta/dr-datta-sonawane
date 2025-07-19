@@ -14,10 +14,10 @@ import { Link } from 'react-router-dom';
 const hospitalData = [
   {
     id: 1,
-    name: "Apollo Hospitals",
+    name: "KIMS Hospital, Thane",
     location: "Mumbai Central",
     phone: "+91 98765 43210",
-    image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop",
+    image: "https://www.marksconsultants.com/projects/_hiranandani-hospital-thane.jpg-2_auto_x2_auto_x2.jpg",
     services: ["Cardiology", "Oncology", "Neurology"]
   },
   {
