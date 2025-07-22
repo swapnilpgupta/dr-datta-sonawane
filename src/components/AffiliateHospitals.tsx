@@ -15,7 +15,7 @@ const hospitalData = [
   {
     id: 1,
     name: "KIMS Hospital, Thane",
-    location: "Thane",
+    location: "Mumbai Central",
     phone: "+91 98765 43210",
     image: "https://www.marksconsultants.com/projects/_hiranandani-hospital-thane.jpg-2_auto_x2_auto_x2.jpg",
     services: ["Cardiology", "Oncology", "Neurology"]
