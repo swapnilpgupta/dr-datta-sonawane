@@ -9,6 +9,22 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  build: {
+    assetsDir: '',
+    rollupOptions: {
+      output: {
+        // Configure asset file names to go directly in dist root
+        assetFileNames: (assetInfo) => {
+          const extType = assetInfo.name.split('.')[1]
+          return `[name]-[hash].${extType}` // No folder prefix
+        },
+        // Configure JS chunk file names
+        chunkFileNames: '[name]-[hash].js',
+        // Configure entry file names  
+        entryFileNames: '[name]-[hash].js'
+      }
+    }
+  },
   plugins: [
     react(),
     mode === 'development' &&
