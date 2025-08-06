@@ -25,7 +25,7 @@ const Hero = () => {
           >
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-                Expert Urological Care by{' '}
+                Expert {' '}
                 <span className="text-primary">Dr. Datta Sonawane</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
