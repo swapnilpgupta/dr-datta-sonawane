@@ -26,7 +26,7 @@ const Hero = () => {
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 Expert {' '}
-                <span className="text-primary">Dr. Datta Sonawane</span>
+                <span className="text-primary">swapnil</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
                 MBBS, MS (General Surgery), MCh (Urology) - Providing comprehensive urological 
