@@ -20,7 +20,7 @@ jobs:
         run: npm install
  
       - name: Build
-        run: npm run 
+        run: npm run build
 
       - name: Create public_html structure
         run: |
@@ -34,5 +34,6 @@ jobs:
           publish_dir: ./public_html
 
           publish_branch: build
+
 
 
