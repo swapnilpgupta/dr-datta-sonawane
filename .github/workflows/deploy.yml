@@ -24,7 +24,7 @@ jobs:
 
       - name: Create public_html structure
         run: |
-         mkdir -public_html
+         mkdir -p public_html
          cp -r dist/* public_html/
  
       - name: Deploy to build branch
@@ -34,4 +34,5 @@ jobs:
           publish_dir: ./public_html
 
           publish_branch: build
+
 
